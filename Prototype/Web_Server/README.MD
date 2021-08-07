@@ -1,4 +1,4 @@
-<h1>Smart Parcel Web Server <h5>(c) 2021 NodeSpider</h5></h1>
+<h1>Smart Parcel Web Server <h5>(c) 2021 NodeSpider - Richard Jouas</h5></h1>
 
 Written in Python using Django Framework
 
