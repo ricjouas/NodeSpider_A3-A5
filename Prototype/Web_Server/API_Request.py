@@ -6,7 +6,7 @@
 import requests
 from requests.structures import CaseInsensitiveDict
 
-url = "http://127.0.0.1:8000/temperature/"
+url = "http://127.0.0.1:8000/api/temperature/"
 
 headers = CaseInsensitiveDict()
 headers["Accept"] = "application/json"
