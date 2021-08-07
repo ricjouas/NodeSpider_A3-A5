@@ -2,7 +2,7 @@
 
 Written in Python using Django Framework
 
-Database with SQLite, uses REST API to handle data received
+Database with SQLite, uses REST API to handle data
 
 Also using token based authentication to get/post data
 and has a frontend client to display data
