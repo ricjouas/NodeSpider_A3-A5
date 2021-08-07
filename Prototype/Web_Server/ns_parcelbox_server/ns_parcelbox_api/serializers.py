@@ -1,7 +1,5 @@
 from rest_framework import serializers
-from .models import Temperature
-from .models import Humidity
-from .models import Motion
+from .models import Temperature, Humidity, Motion
 
 class TempSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
