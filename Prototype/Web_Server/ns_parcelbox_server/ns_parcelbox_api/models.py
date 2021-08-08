@@ -27,7 +27,7 @@ class Motion(models.Model):
 
     def __str__(self):
         if bool(self.motion) == True:
-            d = f"No motion detected. Last checked {self.date_created}"
-        else:
             d = f"Motion in front of your parcelbox! At {self.date_created}"
+        else:
+            d = f"No motion detected. Last checked {self.date_created}"
         return d
