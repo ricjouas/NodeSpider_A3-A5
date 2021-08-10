@@ -18,8 +18,8 @@ DHT dht(DHTPIN, DHTTYPE);
 
 int    HTTP_PORT   = 80;
 String HTTP_METHOD = "POST"; // or "POST"
-char   HOST_NAME[] = "ricjouas.pagekite.me"; // hostname of web server:
-String PATH_NAME   = "/api/temperature/";
+char   HOST_NAME[] = ""; // hostname of web server:
+String PATH_NAME   = "";
 
 WiFiClient client;
 
@@ -78,8 +78,8 @@ void curlRequest() {
     HTTPClient http;
     String dhtT = readDHTTemperature();
     String json = "{\"temp\":\""+dhtT+"\"}";
-    http.begin("http://ricjouas.pagekite.me/api/temperature/"); //Specify destination for HTTP request
-    http.addHeader("Authorization", "Token d7acdeea7932533dee54afb155c3f2e93746906f");
+    http.begin("http://"); //Specify destination for HTTP request
+    http.addHeader("Authorization", "Token ");
     http.addHeader("Content-Type", "application/json");
     int httpCode = http.POST(json);
     //int httpCode =http.GET();
