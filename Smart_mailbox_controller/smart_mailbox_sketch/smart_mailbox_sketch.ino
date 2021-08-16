@@ -10,8 +10,12 @@ const char* password = "";
 const unsigned long eventInterval = 60000;
 unsigned long previousTime = 0;
 
+int motion = 0;
+int pirState = LOW;
+
 #define DHTPIN 16
 #define DHTTYPE DHT11
+#define pirPin 2
 
 //Type of sensor
 DHT dht(DHTPIN, DHTTYPE);
@@ -57,10 +61,44 @@ void setup() {
 
   Serial.begin(115200);
   Serial.println(F("STARTING SMART MAILBOX!"));
-
+  pinMode(pirPin, INPUT);
   dht.begin();
   wifiConnect();
-  tempCurlRequest();
+  
+}
+
+void PIRSensor() {
+   if(digitalRead(pirPin) == HIGH) {
+    if(pirState==LOW){
+       Serial.println("YOU'VE GOT MAIL!!");
+        if (WiFi.status() == WL_CONNECTED) { //Check WiFi connection status
+          HTTPClient http;
+          String message = "YOU'VE GOT MAIL!!";
+          String json = "{\"motion\":\""+message+"\"}";
+          http.begin("http://ricjouas.pagekite.me/api/motion/"); //Specify destination for HTTP request
+          http.addHeader("Authorization", "Token ");
+          http.addHeader("Content-Type", "application/json");
+          int httpCode = http.POST(json);
+          //int httpCode =http.GET();
+          if (httpCode > 0) {
+            Serial.print("Http response code: ");
+            Serial.println(httpCode);
+            Serial.println(json);
+            //String payload = http.getString();
+            //Serial.println(payload);
+            if (httpCode == 201) {
+              Serial.println("Success!");
+            }
+          } 
+        }      
+       pirState=HIGH;
+       delay(100);
+      }       
+   }else{
+    if (pirState==HIGH){
+      pirState=LOW;
+    }
+   }
 }
 
 void tempCurlRequest() {
@@ -69,8 +107,8 @@ void tempCurlRequest() {
     HTTPClient http;
     String dhtT = readDHTTemperature();
     String json = "{\"temp\":\""+dhtT+"\"}";
-    http.begin("http://"); //Specify destination for HTTP request
-    http.addHeader("Authorization", "Token");
+    http.begin("http://ricjouas.pagekite.me/api/temperature/"); //Specify destination for HTTP request
+    http.addHeader("Authorization", "Token ");
     http.addHeader("Content-Type", "application/json");
     int httpCode = http.POST(json);
     //int httpCode =http.GET();
@@ -93,8 +131,8 @@ void humidCurlRequest() {
     HTTPClient http;
     String dhtH = readDHTHumidity();
     String json = "{\"humidity\":\""+dhtH+"\"}";
-    http.begin("http://"); //Specify destination for HTTP request
-    http.addHeader("Authorization", "Token");
+    http.begin("http://ricjouas.pagekite.me/api/humidity/"); //Specify destination for HTTP request
+    http.addHeader("Authorization", "Token ");
     http.addHeader("Content-Type", "application/json");
     int httpCode = http.POST(json);
     //int httpCode =http.GET();
@@ -112,7 +150,7 @@ void humidCurlRequest() {
 }
 
 void loop() {
-
+  PIRSensor();
   unsigned long currentTime = millis();
   if( currentTime - previousTime >= eventInterval){
     tempCurlRequest();
