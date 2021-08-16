@@ -8,7 +8,7 @@ class Temperature(models.Model):
     verbose_name="TimeGenerated", auto_now_add=True)
 
     def __str__(self):
-        d = f"Temp: {self.temp} | Date: {self.date_created}"
+        d = f"{self.temp}c | Date: {self.date_created}"
         return d
 
 class Humidity(models.Model):
@@ -17,7 +17,7 @@ class Humidity(models.Model):
     verbose_name="TimeGenerated", auto_now_add=True)
 
     def __str__(self):
-        d = f"Humidity: {self.humidity_level} | Date: {self.date_created}"
+        d = f"{self.humidity_level}% | Date: {self.date_created}"
         return d
 
 class Motion(models.Model):
