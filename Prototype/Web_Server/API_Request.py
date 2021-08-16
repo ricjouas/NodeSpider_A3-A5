@@ -10,7 +10,7 @@ url = "http://127.0.0.1:8000/api/temperature/"
 
 headers = CaseInsensitiveDict()
 headers["Accept"] = "application/json"
-headers["Authorization"] = "Token <insert-token-here>"
+headers["Authorization"] = "Token "
 headers["Content-Type"] = "application/json"
 
 data = """

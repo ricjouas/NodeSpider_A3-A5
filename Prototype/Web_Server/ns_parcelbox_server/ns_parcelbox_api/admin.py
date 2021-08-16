@@ -1,7 +1,5 @@
 from django.contrib import admin
-from .models import Temperature
-from .models import Humidity
-from .models import Motion
+from .models import Temperature, Humidity, Motion
 
 # model registration
 
