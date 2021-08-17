@@ -15,7 +15,7 @@ headers["Content-Type"] = "application/json"
 
 data = """
 {
-	"temp": 1337
+	"temp": 12.5
 }
 """
 

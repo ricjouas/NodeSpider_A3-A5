@@ -1,6 +1,7 @@
 from ns_parcelbox_api.models import Humidity, Motion, Temperature
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework import filters
 from rest_framework.permissions import IsAuthenticated
 from .serializers import TempSerializer, HumidSerializer, MotionSerializer
 from .models import Temperature, Humidity, Motion
@@ -8,16 +9,22 @@ from .models import Temperature, Humidity, Motion
 # api view models
 
 class TempViewSet(viewsets.ModelViewSet):
+    search_fields =  ['temperature']
+    filter_backends = (filters.SearchFilter,)
     permission_classes = (IsAuthenticated,)
     queryset = Temperature.objects.all().order_by('date_created')
     serializer_class = TempSerializer
 
 class HumidViewSet(viewsets.ModelViewSet):
+    search_fields =  ['humidity']
+    filter_backends = (filters.SearchFilter,)
     permission_classes = (IsAuthenticated,)
     queryset = Humidity.objects.all().order_by('date_created')
     serializer_class = HumidSerializer
 
 class MotionViewSet(viewsets.ModelViewSet):
+    search_fields =  ['motion']
+    filter_backends = (filters.SearchFilter,)
     permission_classes = (IsAuthenticated,)
     queryset = Motion.objects.all().order_by('date_created')
     serializer_class = MotionSerializer
