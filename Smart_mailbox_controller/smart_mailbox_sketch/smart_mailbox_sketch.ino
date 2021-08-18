@@ -7,8 +7,10 @@
 const char* ssid = "";
 const char* password = "";
 
-const unsigned long eventInterval = 60000;
+const unsigned long eventInterval = 900000;
 unsigned long previousTime = 0;
+const unsigned long motionInterval = 21600000;
+unsigned long motionPreviousTime = 0;
 
 int motion = 0;
 int pirState = LOW;
@@ -64,6 +66,9 @@ void setup() {
   pinMode(pirPin, INPUT);
   dht.begin();
   wifiConnect();
+  tempCurlRequest();
+  humidCurlRequest();
+  motionCurlRequest();
   
 }
 
@@ -74,9 +79,9 @@ void PIRSensor() {
         if (WiFi.status() == WL_CONNECTED) { //Check WiFi connection status
           HTTPClient http;
           String message = "YOU'VE GOT MAIL!!";
-          String json = "{\"motion\":\""+message+"\"}";
-          http.begin("http://ricjouas.pagekite.me/api/motion/"); //Specify destination for HTTP request
-          http.addHeader("Authorization", "Token ");
+          String json = "{\""+message+"\"}";
+          http.begin("http://website/api/temperature/"); //Specify destination for HTTP request
+          http.addHeader("Authorization", "Token");
           http.addHeader("Content-Type", "application/json");
           int httpCode = http.POST(json);
           //int httpCode =http.GET();
@@ -92,7 +97,6 @@ void PIRSensor() {
           } 
         }      
        pirState=HIGH;
-       delay(100);
       }       
    }else{
     if (pirState==HIGH){
@@ -106,16 +110,16 @@ void tempCurlRequest() {
   if (WiFi.status() == WL_CONNECTED) { //Check WiFi connection status
     HTTPClient http;
     String dhtT = readDHTTemperature();
-    String json = "{\"temp\":\""+dhtT+"\"}";
-    http.begin("http://ricjouas.pagekite.me/api/temperature/"); //Specify destination for HTTP request
-    http.addHeader("Authorization", "Token ");
+    String jsonn = "{\"temp\":\""+dhtT+"\"}";
+    http.begin("http://website/api/temperature/"); //Specify destination for HTTP request
+    http.addHeader("Authorization", "Token");
     http.addHeader("Content-Type", "application/json");
-    int httpCode = http.POST(json);
+    int httpCode = http.POST(jsonn);
     //int httpCode =http.GET();
     if (httpCode > 0) {
       Serial.print("Http response code: ");
       Serial.println(httpCode);
-      Serial.println(json);
+      Serial.println(jsonn);
       //String payload = http.getString();
       //Serial.println(payload);
       if (httpCode == 201) {
@@ -130,9 +134,9 @@ void humidCurlRequest() {
   if (WiFi.status() == WL_CONNECTED) { //Check WiFi connection status
     HTTPClient http;
     String dhtH = readDHTHumidity();
-    String json = "{\"humidity\":\""+dhtH+"\"}";
-    http.begin("http://ricjouas.pagekite.me/api/humidity/"); //Specify destination for HTTP request
-    http.addHeader("Authorization", "Token ");
+    String json = "{\"humidity_level\":\""+dhtH+"\"}";
+    http.begin("http://website/api/humidity/"); //Specify destination for HTTP request
+    http.addHeader("Authorization", "Token");
     http.addHeader("Content-Type", "application/json");
     int httpCode = http.POST(json);
     //int httpCode =http.GET();
@@ -149,13 +153,42 @@ void humidCurlRequest() {
   }
 }
 
+void motionCurlRequest() {
+
+  if (WiFi.status() == WL_CONNECTED) { //Check WiFi connection status
+    HTTPClient http;
+    String message = "True";
+    String jsonnn = "{\"motion\":\""+message+"\"}";
+    http.begin("http://website/api/motion/"); //Specify destination for HTTP request
+    http.addHeader("Authorization", "Token");
+    http.addHeader("Content-Type", "application/json");
+    int httpCode = http.POST(jsonnn);
+    //int httpCode =http.GET();
+    if (httpCode > 0) {
+      Serial.print("Http response code: ");
+      Serial.println(httpCode);
+      Serial.println(jsonnn);
+      //String payload = http.getString();
+      //Serial.println(payload);
+      if (httpCode == 201) {
+        Serial.println("Success!");
+      }
+    }
+  }
+}
+
 void loop() {
-  PIRSensor();
+  //PIRSensor();
   unsigned long currentTime = millis();
   if( currentTime - previousTime >= eventInterval){
     tempCurlRequest();
     humidCurlRequest();
     previousTime = currentTime;
+    
+  if( currentTime - motionPreviousTime >= motionInterval){
+    motionCurlRequest();
+    motionPreviousTime = currentTime;
+  }
     
   }
 }
