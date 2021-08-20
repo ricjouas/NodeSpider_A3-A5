@@ -182,7 +182,7 @@ export default {
     };
   },
     created() {
-    const headers = { "Authorization": "Token d7acdeea7932533dee54afb155c3f2e93746906f" };
+    const headers = { "Authorization": "Token" };
     fetch("https://ricjouas.pagekite.me/api/temperature/", { headers })
       .then(response => response.json())
       .then(data => (this.latestTemp = data.slice(-1)[0]));
