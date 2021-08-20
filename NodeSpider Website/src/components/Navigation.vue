@@ -49,6 +49,7 @@
       <v-toolbar-title>
         <v-img src="@/assets/img/logo.png" max-width="50px" />
       </v-toolbar-title>
+      <h3>NodeSpider</h3>
       <v-spacer />
       <v-app-bar-nav-icon
         @click.stop="drawer = !drawer"

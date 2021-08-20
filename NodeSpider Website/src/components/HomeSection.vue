@@ -20,7 +20,7 @@
                 @click="$vuetify.goTo('#features')"
                 class="mt-5"
               >
-                Don't Take Our Word For It! Check out the Prototype!
+                Check Out Prototype
                 <v-icon class="ml-2">mdi-arrow-down</v-icon>
               </v-btn>
               <div class="video d-flex align-center py-4">
@@ -88,8 +88,6 @@
               cols="12"
               sm="4"
               class="text-center"
-              v-for="(feature, i) in features"
-              :key="i"
             >
               <v-hover v-slot:default="{ hover }">
                 <v-card
@@ -98,22 +96,64 @@
                   :elevation="hover ? 10 : 4"
                   :class="{ up: hover }"
                 >
-                  <v-img
-                    :src="feature.img"
-                    max-width="100px"
-                    class="d-block ml-auto mr-auto"
-                    :class="{ 'zoom-efect': hover }"
-                  ></v-img>
-                  <h1 class="font-weight-regular">{{ feature.title }}</h1>
+                  <h1>Temperature</h1>
+                  <img src="~@/assets/img/icon2.png" width="120"></img>                  
+                  <h1>{{latestTemp.temp}}c</h1>
                   <h4 class="font-weight-regular subtitle-1">
-                    {{ feature.text }}
-                  </h4>
+                    <u>Last Refresh: {{latestTemp.date_created}}</u>
+                  </h4>             
+                </v-card>
+              </v-hover>
+            </v-col>
+            <v-col
+              cols="12"
+              sm="4"
+              class="text-center"
+            >
+              <v-hover v-slot:default="{ hover }">
+                <v-card
+                  class="card"
+                  shaped
+                  :elevation="hover ? 10 : 4"
+                  :class="{ up: hover }"
+                >
+                  <h1>Humidity</h1>
+                  <img src="~@/assets/img/icon1.png" width="120"></img>                  
+                  <h1>{{latestHumidity.humidity_level}}%</h1>
+                  <h4 class="font-weight-regular subtitle-1">
+                    <u>Last Refresh: {{latestHumidity.date_created}}</u>
+                  </h4>             
+                </v-card>
+              </v-hover>
+            </v-col>
+            <v-col
+              cols="12"
+              sm="4"
+              class="text-center"
+            >
+              <v-hover v-slot:default="{ hover }">
+                <v-card
+                  class="card"
+                  shaped
+                  :elevation="hover ? 10 : 4"
+                  :class="{ up: hover }"
+                >                  
+                  <h1>Motion Detection</h1>
+                  <img v-if="latestMotion.motion = true" src="~@/assets/mail.png" width="120"></img>                  
+                  <h1 v-if="latestMotion.motion = true">You've got mail!</h1>                  
+                  <h3 v-if="latestMotion.motion = true">We've picked up motion at the letterbox 🕵️‍♀️</h3>
+                  <img v-if="latestMotion.motion = false" src="~@/assets/nomail.png" width="120"></img>
+                  <h3 v-if="latestMotion.motion = false">All clear! We will keep looking 👀</h3>
+                  <h4 class="font-weight-regular subtitle-1">
+                    <u>Last Checked: {{latestMotion.date_created}}</u>
+                  </h4>             
                 </v-card>
               </v-hover>
             </v-col>
           </v-row>
         </v-col>
       </v-row>
+      <center><b>Note: This is live data fetched from our Django backend server, which receives updates from the Prototype's sensors.</b></center>
     </v-container>
     <v-dialog v-model="dialog" max-width="640px">
       <v-card>
@@ -134,27 +174,25 @@
 export default {
   data() {
     return {
+      latestTemp: "--c",
+      latestHumidity: "--%",
+      latestMotion: "Cannot connect to server",
       dialog: false,
       videoId: "S0bcdB53kaY",
-      features: [
-        {
-          img: require("@/assets/img/icon2.png"),
-          title: "Current Temperature",
-          text: "21.9c",
-        },
-        {
-          img: require("@/assets/img/icon1.png"),
-          title: "Humidity Level",
-          text: "57%",
-        },
-        {
-          img: require("@/assets/img/icon3.png"),
-          title: "Motion Alert",
-          text: "Motion in front of your parcelbox!",
-        },
-      ],
     };
   },
+    created() {
+    const headers = { "Authorization": "Token d7acdeea7932533dee54afb155c3f2e93746906f" };
+    fetch("https://ricjouas.pagekite.me/api/temperature/", { headers })
+      .then(response => response.json())
+      .then(data => (this.latestTemp = data.slice(-1)[0]));
+    fetch("https://ricjouas.pagekite.me/api/humidity/", { headers })
+      .then(response => response.json())
+      .then(data => (this.latestHumidity = data.slice(-1)[0]));
+    fetch("https://ricjouas.pagekite.me/api/motion/", { headers })
+      .then(response => response.json())
+      .then(data => (this.latestMotion = data.slice(-1)[0]));
+  },  
   watch: {
     dialog(value) {
       if (!value) {

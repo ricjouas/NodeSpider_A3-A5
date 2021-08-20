@@ -67,6 +67,7 @@
   </section>
 </template>
 
+
 <style scoped>
 #prototype {
   background-color: #f4f7f5;

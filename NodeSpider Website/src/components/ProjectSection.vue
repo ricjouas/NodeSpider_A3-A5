@@ -17,7 +17,9 @@
                 </v-col>
                 <v-col cols="12" class="d-flex align-center">
                   <p class="text-justify">
-                    Add our project description
+                    Nodespider’s outcome for this project is to develop the foundations for a smart parcel mailbox that would one day replace the common home mailbox. Nodespider is taking into consideration key areas for the development of this product and we will need to first undergo research and testing before finalising this product. 
+The key areas under consideration include software, hardware, materials, financial and marketing aspects for the development. The software department will look at compatibility with your existing WiFi, iOS and Android systems, and also being user- friendly on mobile devices. The hardware department will need to look at the use of a micro controller that controls input and outputs. The materials department will look at research into and source ing out materials that are able to withstand harsh all types of weather conditions and arewill be suitable for security purposes. The marketing research will look at existing competitors and current trends and the financial research will coverlook at areas such as generating revenue for this product, the cost of the materials and development that needs to be undertaken. 
+
                   </p>
                 </v-col>
               </v-row>
