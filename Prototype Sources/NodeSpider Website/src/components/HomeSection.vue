@@ -178,7 +178,7 @@ export default {
       latestHumidity: "--%",
       latestMotion: "Cannot connect to server",
       dialog: false,
-      videoId: "S0bcdB53kaY",
+      videoId: "--QRxC5TUbM",
     };
   },
     created() {

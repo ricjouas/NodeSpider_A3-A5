@@ -24,7 +24,7 @@
                 </v-icon>
                 GitHub Repo
               </v-btn>
-              <v-btn rounded outlined href="https://github.com/ricjouas/NodeSpider_A3-A5" target="_blank" large color="white" class="mt-4">
+              <v-btn rounded outlined href="https://github.com/ricjouas/NodeSpider_A3-A5/raw/main/NodeSpider%20A3%20Final%20Report.pdf" target="_blank" large color="white" class="mt-4">
                 <v-icon class="mr-2">
                   mdi-file
                 </v-icon>

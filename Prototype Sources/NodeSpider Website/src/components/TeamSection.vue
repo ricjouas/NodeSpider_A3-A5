@@ -19,14 +19,13 @@
                     </div>
                     <div class="black--text text-uppercase text-h5 my-2">Richard Jouas</div>
                     <v-divider class="my-2"/>
+                    <div class="text-uppercase blue--text"><b>User interface Designer / Full-stack Developer</b></div>
+                    <v-divider class="my-2"/>
                     <div class="blue--text">Richard is a full-time systems administrator and Bachelor of IT student with RMIT.</div>
                     <div class="blue--text">When he's not working or studying, he codes, writes his own apps or games, and reads about the latest tech developments.</div>
                     <div class="blue--text">He is also a big motorsport fan, and mostly watches Formula One and Indy Car racing.</div>
                     <div class="blue--text">When he's not glued to his monitor, he enjoys the outdoors, hiking, and exploring new restaurants with a glass of beer or whiskey.</div>
-                    <v-divider class="my-2"/>
-                    <div class="text-uppercase blue--text">INTJ-T (Architect)</div>
-                    <v-divider class="my-2"/>
-                    <v-btn
+                    <v-btn :href="'https://ricjouas.github.io/IT_Website/'"
                         v-bind="size"
                         rounded
                         outlined
@@ -52,14 +51,13 @@
                     </div>
                     <div class="black--text text-uppercase text-h5 my-2">Jason Hewitt</div>
                     <v-divider class="my-2"/>
+                    <div class="text-uppercase blue--text"><b>Technical designer / Hardware Developer</b></div>
+                    <v-divider class="my-2"/>
                     <div class="blue--text">Jason loves the outdoors, taking his dog Beetlejuice to the beach, surfing, hiking and camping. </div>
                     <div class="blue--text">Previously, he studied electrical engineering and currently works as an engineer, specifically in Industrial automation in the food industry.</div>
                     <div class="blue--text">His career has taken him to all parts of Australia, Iceland, Denmark and the UK.</div>
                     <div class="blue--text">He hopes to study IT to upskill himself for further career opportunities.</div>
-                    <v-divider class="my-2"/>
-                    <div class="text-uppercase blue--text">ENTP (Debater)</div>
-                    <v-divider class="my-2"/>
-                    <v-btn
+                    <v-btn :href="'https://jasonhewitt86.github.io/cosc2196/'"
                         v-bind="size"
                         rounded
                         outlined
@@ -81,27 +79,25 @@
                     <div class="flex-center">
                       <div class="circle1">
                         <div class="circle2">
-                          <v-img src="~@/assets/duc.png"/>
+                          <v-img src="~@/assets/chevonne.png"/>
                         </div>
                       </div>
                     </div>
-                    <div class="black--text text-uppercase text-h5 my-2">Duc Hang</div>
+                    <div class="black--text text-uppercase text-h5 my-2">Chevonne Cheng</div>
                     <v-divider class="my-2"/>
-                    <div class="blue--text">Hang is a raccoon-loving, Australian-born Vietnamese who is currently studying for a Bachelor of Business.</div>
-                    <div class="blue--text">Her interest in IT started when she was working as an inventory controller where she came across the concept of RFID.</div>
-                    <div class="blue--text">She has 6 years professional experience in the retail sector, over 3 years in supply chain.</div>
-                    <div class="blue--text">She's looking to develop her knowledge and skills to hopefully have a career as a business analyst. </div>
+                    <div class="text-uppercase blue--text"><b>Content Director</b></div>
                     <v-divider class="my-2"/>
-                    <div class="text-uppercase blue--text">ESFJ-A (Consuls)</div>
-                    <v-divider class="my-2"/>
-                    <v-btn
+                    <div class="blue--text">Chevonne is a herbivore and mother of two adopted dogs: a Chow Chow and a mixed-breed street dog.</div>
+                    <div class="blue--text">She was born and raised in Singapore and previously studied marketing.</div>
+                    <div class="blue--text">After spending over 8 years in communications and advertising, she decided to pursue RMIT's Bachelor of IT degree to explore new IT career paths, preferably in a field that promotes a positive cause.</div>                    
+                    <v-btn :href="'https://s3913877.github.io/Assignment1MyProfile/Assignment1MyProfile/'"
                         v-bind="size"
                         rounded
                         outlined
                         color="purple"
                         class="mt-6"
                     >
-                      Visit Duc's page
+                      Visit Chevonne's page
                     </v-btn>
                   </v-card-text>
                 </div>              
@@ -118,13 +114,12 @@
                     </div>
                     <div class="black--text text-uppercase text-h5 my-2">Christopher Grimley</div>
                     <v-divider class="my-2"/>
+                    <div class="text-uppercase blue--text"><b>Researcher</b></div>
+                    <v-divider class="my-2"/>
                     <div class="blue--text">Chris loves sci-fi horror movies. His interest in IT came as a blessing in disguise when a coworker convinced him to build a gaming PC.</div>
                     <div class="blue--text">While learning about hardware and software, he faced endless problems that needed solutions, which sparked his interest in IT. </div>
                     <div class="blue--text">He currently has a Certificate 3 in Information and Technology. </div>
-                    <v-divider class="my-2"/>
-                    <div class="text-uppercase blue--text">ISFJ (Defender)</div>
-                    <v-divider class="my-2"/>
-                    <v-btn
+                    <v-btn :href="'https://s3912799.github.io/COSC2196Assignment1/'"
                         v-bind="size"
                         rounded
                         outlined
@@ -144,26 +139,26 @@
                     <div class="flex-center">
                       <div class="circle1">
                         <div class="circle2">
-                          <v-img src="~@/assets/chevonne.png"/>
+                          <v-img src="~@/assets/duc.png"/>
                         </div>
                       </div>
                     </div>
-                    <div class="black--text text-uppercase text-h5 my-2">Chevonne Cheng</div>
+                    <div class="black--text text-uppercase text-h5 my-2">Duc Hang</div>
                     <v-divider class="my-2"/>
-                    <div class="blue--text">Chevonne is a herbivore and mother of two adopted dogs: a Chow Chow and a mixed-breed street dog.</div>
-                    <div class="blue--text">She was born and raised in Singapore and previously studied marketing.</div>
-                    <div class="blue--text">After spending over 8 years in communications and advertising, she decided to pursue RMIT's Bachelor of IT degree to explore new IT career paths, preferably in a field that promotes a positive cause.</div>
+                    <div class="text-uppercase blue--text"><b>Researcher</b></div>
                     <v-divider class="my-2"/>
-                    <div class="text-uppercase blue--text">INFJ-A (Advocate)</div>
-                    <v-divider class="my-2"/>
-                    <v-btn
+                    <div class="blue--text">Hang is a raccoon-loving, Australian-born Vietnamese who is currently studying for a Bachelor of Business.</div>
+                    <div class="blue--text">Her interest in IT started when she was working as an inventory controller where she came across the concept of RFID.</div>
+                    <div class="blue--text">She has 6 years professional experience in the retail sector, over 3 years in supply chain.</div>
+                    <div class="blue--text">She's looking to develop her knowledge and skills to hopefully have a career as a business analyst. </div>
+                    <v-btn :href="'https://duc-hang.github.io/Assessment-1---My-Profile/'"
                         v-bind="size"
                         rounded
                         outlined
                         color="purple"
                         class="mt-6"
                     >
-                      Visit Chevonne's page
+                      Visit Duc's page
                     </v-btn>
                   </v-card-text>
                   <v-divider style="margin-right: -23px" vertical v-if="this.$vuetify.breakpoint.mdAndUp"></v-divider>
@@ -184,13 +179,12 @@
                     </div>
                     <div class="black--text text-uppercase text-h5 my-2">Ben Wakefield</div>
                     <v-divider class="my-2"/>
+                    <div class="text-uppercase blue--text"><b>Researcher</b></div>
+                    <v-divider class="my-2"/>
                     <div class="blue--text">Ben always had an interest in programming, drawing, and technology.</div>
                     <div class="blue--text">He was born and raised in Australia and graduated from Springwood State Highschool in 2020.</div>
                     <div class="blue--text">Being the quiet type, he likes to spend his free time playing video games with his friends.</div>
-                    <v-divider class="my-2"/>
-                    <div class="text-uppercase blue--text">ISTJ-T (Logistician)</div>
-                    <v-divider class="my-2"/>
-                    <v-btn
+                    <v-btn :href="'https://doot5.github.io/A1-Assessment/'"
                         v-bind="size"
                         rounded
                         outlined
